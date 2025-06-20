@@ -5,4 +5,7 @@ export const URLS = {
 export const PATHS = {
   home: "/",
   top100movies: "/top100movies",
+  movie: "/movie",
+  movies: "/movies",
+  serials: "/serials",
 };

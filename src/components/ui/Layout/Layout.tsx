@@ -1,18 +1,15 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 import Container from "../Container/Container";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
-interface IProps {
-  children: React.ReactNode;
-}
-
-const Layout: React.FC<IProps> = ({ children }) => {
+const Layout: React.FC = () => {
   return (
     <Container>
       <Header />
-      {children}
+      <Outlet />
       <Footer />
     </Container>
   );

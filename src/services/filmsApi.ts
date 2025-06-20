@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { URLS } from "../constants/constants";
-import type { IResponseFilms } from "../types/types";
+import type { IFilm, IResponseFilms } from "../types/types";
 
 const API_KEY = import.meta.env.VITE_KINOPOISKAPI_KEY;
 
@@ -16,9 +16,12 @@ export const filmsApi = createApi({
   }),
   endpoints: builder => ({
     getFilms: builder.query<IResponseFilms, void>({
-      query: () => `films?type=FILM`,
+      query: () => `/films?type=FILM`,
+    }),
+    getFilmById: builder.query<IFilm, string>({
+      query: id => `/films/${id}`,
     }),
   }),
 });
 
-export const { useGetFilmsQuery } = filmsApi;
+export const { useGetFilmsQuery, useGetFilmByIdQuery } = filmsApi;
