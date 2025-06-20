@@ -1,0 +1,23 @@
+.movieItem {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.poster {
+    width: 200px;
+    height: 300px;
+}
+
+.name {
+    font-size: 18px;
+}
+
+.year {
+    font-size: 14px;
+    opacity: 30%;
+}
