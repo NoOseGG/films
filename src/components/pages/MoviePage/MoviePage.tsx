@@ -5,13 +5,12 @@ import { useGetFilmByIdQuery } from "../../../services/filmsApi";
 import styles from "./MoviePage.module.css";
 
 const MoviePage: React.FC = () => {
-  const { id } = useParams();
+  const { id } = useParams<IParams>();
+  const { data, error, isLoading } = useGetFilmByIdQuery(id || "");
 
   if (!id) {
-    return <div>Error: ID is missing</div>; // или редирект, или null
+    return <div>Error: ID is missing</div>;
   }
-
-  const { data, error, isLoading } = useGetFilmByIdQuery(id);
 
   return (
     <div>
@@ -21,7 +20,32 @@ const MoviePage: React.FC = () => {
         <>Loading...</>
       ) : data ? (
         <>
-          <div>{data.nameRu}</div>
+          <div className={styles.movie}>
+            <div className={styles.top}>
+              <img
+                className={styles.poster}
+                src={data.posterUrl}
+                alt={data.nameRu}
+              />
+              <div className={styles.info}>
+                <div className={styles.infoRating}>
+                  <span>IMBD: {data.ratingImdb || "-"}</span>
+                  <span>Kinopoisk: {data.ratingKinopoisk}</span>
+                </div>
+                <div>Год: {data.year}</div>
+                <span>
+                  Жанр:{" "}
+                  {data.genres.map((item, index) => (
+                    <span>
+                      {item.genre}
+                      {index === data.genres.length - 1 ? "." : ","}{" "}
+                    </span>
+                  ))}
+                </span>
+              </div>
+            </div>
+            <div className={styles.description}>{data.description}</div>
+          </div>
         </>
       ) : null}
     </div>

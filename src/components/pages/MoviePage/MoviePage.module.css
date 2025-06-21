@@ -1,0 +1,26 @@
+.movie {
+}
+
+.top {
+  display: flex;
+  justify-content: start;
+  gap: 50px;
+}
+
+.poster {
+  max-width: 400px;
+}
+
+.info {
+}
+
+.infoRating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.description {
+    margin-top: 10px;
+}
